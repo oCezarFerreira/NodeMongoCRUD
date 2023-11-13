@@ -18,7 +18,7 @@ app.use(
 app.use(express.json())
 
 // rota inical
-app.get('/', (req, res) => res.json({ message: 'Oi express!' }))
+app.get('/', (req, res) => res.status(200).json({ message: 'Oi express!' }))
 
 // rotas API
 app.use('/person', personRoutes)
@@ -32,3 +32,5 @@ mongoose.connect(
     console.log('Conectamos ao MongoDB')
   })
   .catch((err) => console.log(err))
+
+module.exports = app
