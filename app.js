@@ -1,21 +1,17 @@
 require('dotenv').config()
 
-const personRoutes = require('./routes/personRoutes')
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
+const bodyParser = require('body-parser')
+
+const personRoutes = require('./routes/personRoutes')
 
 const dbUser = process.env.DB_USER
 const dbPassword = process.env.DB_PASSWORD
 
 // Ler json / Middleware
-app.use(
-  express.urlencoded({
-    extended: true
-  })
-)
-
-app.use(express.json())
+app.use(bodyParser.json())
 
 // rota inical
 app.get('/', (req, res) => res.status(200).json({ message: 'Oi express!' }))
